@@ -1,0 +1,34 @@
+---
+title: "Project Title"
+author:
+- 'Professor: Adeline Lo // TA: Dillon Laaker'
+- 'Group Project by Clint Rooker, Ethan Vanderwilden, & Jess Esplin'
+date: "Presented in PS812 on 12/10/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write-Up Requirements:  
+(<5 written pages, visualizations not included)  
+-abstract  
+-info on what is being replicated + main theoretical argument  
+-main hypothesis  
+-brief description of data  
+-conduct main test  
+-present visualizations  
+-summarize results  
+-critical evaluation:  
+  -whether improvements on testing of hypothesis can be made  
+  -whether assumptions are valid  
+  -conduct robustness checks  
+  -propose ways forward on RQ  
+  
++ 10 min group presentation w/ Q&A  
+  
+
+Our group selected the following paper to replicate:  
+  
+Siegel, Alexandra A., and Vivienne Badaan. 2020. "# No2Sectarianism: Experimental Approaches to Reducing Sectarian Hate Speech Online." American Political Science Review 114:3, 837-855.
