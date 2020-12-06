@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.5)  5 DEC 2020 19:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.5)  6 DEC 2020 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -544,7 +544,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 {c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-87.
+91.
 (c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -554,7 +554,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-2-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-2
--1.pdf  used on input line 243.
+-1.pdf  used on input line 247.
 (pdftex.def)             Requested size: 469.76817pt x 208.78584pt.
 [2] [3 <./replication-project_files/figure-latex/unnamed-chunk-2-1.pdf>] [4] [5
 ] [6]
@@ -564,7 +564,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-4
--1.pdf  used on input line 524.
+-1.pdf  used on input line 528.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [7 <./replication-project_files/figure-latex/unnamed-chunk-4-1.pdf>] [8]
 <replication-project_files/figure-latex/unnamed-chunk-6-1.pdf, id=76, 650.43pt 
@@ -573,7 +573,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-6
--1.pdf  used on input line 590.
+-1.pdf  used on input line 594.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [9 <./replication-project_files/figure-latex/unnamed-chunk-6-1.pdf>] [10]
 <replication-project_files/figure-latex/unnamed-chunk-8-1.pdf, id=91, 650.43pt 
@@ -582,7 +582,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-8
--1.pdf  used on input line 647.
+-1.pdf  used on input line 651.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [11 <./replication-project_files/figure-latex/unnamed-chunk-8-1.pdf>] [12] (./r
 eplication-project.aux)
@@ -618,7 +618,7 @@ nyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/jesse/AppData/Roaming
 ing/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/jesse/AppData
 /Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/jesse/Ap
 pData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on replication-project.pdf (12 pages, 261229 bytes).
+Output written on replication-project.pdf (12 pages, 261459 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
