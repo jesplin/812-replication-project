@@ -1,0 +1,334 @@
+---
+title: "Replicating #No2Sectarianism"
+
+subtitle: 'Siegel, Alexandra A. and Vivienne Badaan. 2020. "#No2Sectarianism: Experimental Approaches to Reducing Sectarian Hate Speech Online." *American Journal of Political Science* 114:3, 837-855.'
+
+date: "10 December 2020 | PS812 | UW-Madison"
+author: "Jess Esplin, J. Clinton Rooker, and Ethan vanderWilden"
+
+
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Setting and Question
+
+- What kinds of interventions reduce sectarian online hate speech?
+
+
+- Arab Twittersphere experiment & counter-speech interventions
+
+
+- Identity recategorization & in-group norms
+
+\newpage
+## Data and Methods
+
+- Original data collected from Twitter following counter-speech interventions with a "sock-puppet"
+
+
+- 5 treatments, 1 control group
+  - Elite Common Religious Identity
+  - Elite Common National Identity
+  - Common Religious Identity
+  - Common National Identity
+  - No prime; only the sanction
+  - Control; no tweet reply/intervention
+
+
+- Difference in means tests, confidence intervals
+
+\newpage
+## Hypotheses
+
+- General Form: 
+  - let $x$ =  pre-treatment sectarian tweets - post-treatment sectarian tweets
+
+  - $H_0$: $\bar{x}_{treatment} - \bar{x}_{control} \geq 0$
+  - $H_A$: $\bar{x}_{treatment} - \bar{x}_{control} < 0$
+
+- Example of treatment hypothesis: "Receiving a response to a hateful sectarian message that primes a common Muslim religious identity and highlights support from religious leaders will make individuals less likely to tweet hateful sectarian messages in the future" (841)
+
+\newpage
+## Results
+
+```{r,include=FALSE}
+
+# packages
+library("magrittr")
+library("tidyverse")
+library("haven")
+library("here")
+library("stargazer")
+library("modelsummary")
+library("sjlabelled")
+library(coefplot)
+
+# working directory
+getwd()
+
+#Load in Data
+data <- read.csv("siegel-badaan_data/twitter_data.csv")
+
+# We want the treatment variable as a 'factor' (for its data type)
+# because we want to compare different treatments to the control situation
+data$treat <- as.factor(data$treatment_num)
+
+#getting post- and pre-treatment difference:
+data$month_diff <- data$month_anti_shia_post - data$month_anti_shia_pre
+data$twoweek_diff <- data$two_weeks_anti_shia_post - data$two_weeks_anti_shia_pre
+data$week_diff <- data$week_anti_shia_post - data$week_anti_shia_pre
+data$day_diff <- data$tpd_anti_shia_post - data$tpd_anti_shia_pre
+
+### FOR MAIN FIGURE
+
+#Run linear regression that is testing for difference in means of 
+# certain treatment - control group
+month<-lm(month_diff ~ treat, data=data)
+two_weeks<-lm(twoweek_diff ~ treat, data=data)
+week<-lm(week_diff ~ treat, data=data)
+day<-lm(day_diff ~ treat, data=data)
+```
+
+```{r, include=F}
+#Present results in table
+stargazer(day, week, two_weeks, month,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "text",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets")
+```
+
+```{r, warning=F}
+multiplot(day, week, two_weeks, month, coefficients=c("treat1", "treat2", "treat3", "treat4", "treat5"), 
+          newNames=c(treat1="Arab ID ", treat2="Religious ID ", treat3="Arab ID (Elite)", 
+                     treat4="Religious ID (Elite)", treat5=" No ID "), 
+          names=c("     Day", "   Week", "  Two Weeks ", "Month    "), 
+          title="Effect of Treatment on Volume of Anti-Shia Tweets, 90 and 95% CIs", scales="free_x",
+          sort="alphabetical", innerCI=1.645, outerCI=1.96, single=FALSE,  zeroType = 0,legend.position="none") +
+  theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none", axis.line = element_line(colour = "black"), text = element_text(size=15))+
+  ylab("Treatments") + xlab("Difference in Anti-Shia Tweet Count")+ geom_vline(aes(xintercept = 0), size = .5, linetype = "dashed")
+
+```
+
+\newpage
+## Conclusion and Steps Forward
+
+- Support for elite-endorsed common religious identity prime hypothesis
+  - Cannot reject the null for other treatments
+
+- Results hold up to robustness checks
+
+- Pathways Forward
+  - Multiple interventions
+  - Other social media platforms
+  - Anti-Shia network saturation
+
+\newpage
+## Appendix: Tables and Robustness Checks
+
+\begin{itemize}
+\item[1)] Main Figure Regression Table
+\item[2)] Median Follower Subset Figure
+\item[3)] Median Follower Subset Regression Table
+\item[4)] Low Anti-Shia Saturation Figure
+\item[5)] Low Anti-Shia Saturation Regression Table
+\item[6)] High Anti-Shia Saturation Figure
+\item[7)] High Anti-Shia Saturation Regression Table
+\end{itemize}
+
+\newpage
+## 1. Main Figure Regression Table
+
+```{r, results='asis'}
+#Present results in table
+stargazer(day, week, two_weeks, month,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("Day", "Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "latex",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets",
+          font.size = "tiny", header = FALSE, omit.stat=c("f", "ser"))
+```
+
+
+\newpage
+## 2. Robustness (Less than Median Followers)
+
+```{r , include = F}
+### ROBUSTNESS CHECK - MEDIAN SUBSET
+
+summary(data$followers_count) #see that median = 245
+#subset the data to only look at accounts at or below the median follower count
+data_median <- subset(data, data$followers_count<=245)
+
+#Run linear regression that is testing for difference in means of 
+# certain treatment - control group
+month_med <-lm(month_diff ~ treat, data=data_median)
+two_weeks_med <-lm(twoweek_diff ~ treat, data=data_median)
+week_med <-lm(week_diff ~ treat, data=data_median)
+day_med <-lm(day_diff ~ treat, data=data_median)
+
+#Present results in table
+stargazer(day_med, week_med, two_weeks_med, month_med,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "text",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Fewer Follower Subset)")
+```
+
+```{r}
+multiplot(day_med, week_med, two_weeks_med, month_med, coefficients=c("treat1", "treat2", "treat3", "treat4", "treat5"), 
+          newNames=c(treat1="Arab ID ", treat2="Religious ID ", treat3="Arab ID (Elite)", 
+                     treat4="Religious ID (Elite)", treat5=" No ID "), 
+          names=c("     Day", "   Week", "  Two Weeks ", "Month    "), 
+          title="Effect of Treatment on Volume of Anti-Shia Tweets (Median or Fewer Follower Subset)", scales="free_x",
+          sort="alphabetical", innerCI=1.645, outerCI=1.96, single=FALSE,  zeroType = 0,legend.position="none") +
+  theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none", axis.line = element_line(colour = "black"), text = element_text(size=15))+
+  ylab("Treatments") + xlab("Difference in Anti-Shia Tweet Count")+ geom_vline(aes(xintercept = 0), size = .5, linetype = "dashed")
+```
+
+\newpage
+## 3. Regression Table, Median Robustness Check
+
+```{r, results='asis'}
+stargazer(day_med, week_med, two_weeks_med, month_med,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "latex",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Fewer Follower Subset)",
+          font.size = "tiny", header = FALSE, omit.stat=c("f", "ser"))
+```
+
+\newpage
+## 4. Robustness Checks (Network Saturation - Low)
+
+```{r, include=F}
+data$friends_prop <- (data$anti_shia_friends_count/data$followers_count)
+
+#UNDERSATTURATED NETWORK
+
+#It is possible that the intervention is stronger on those with extremely anti-Shia 
+# saturated networks (ie, they follow many Anti-Shia people proportional to their 
+# overall twitter presence)
+not_saturated <- subset(data, data$friends_prop<=0.156024)
+
+#Run linear regression that is testing for difference in means of 
+# certain treatment - control group
+month_NS <-lm(month_diff ~ treat, data=not_saturated)
+two_weeks_NS <-lm(twoweek_diff ~ treat, data=not_saturated)
+week_NS <-lm(week_diff ~ treat, data=not_saturated)
+day_NS <-lm(day_diff ~ treat, data=not_saturated)
+
+stargazer(day_NS, week_NS, two_weeks_NS, month_NS,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "text",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Less Saturnated Network Subset)")
+
+#OVERSATURATED NETWORK
+
+#It is possible that the intervention is stronger on those with extremely anti-Shia 
+# saturated networks (ie, they follow many Anti-Shia people proportional to their 
+# overall twitter presence)
+saturated_network <- subset(data, data$friends_prop>=0.156024)
+
+#Run linear regression that is testing for difference in means of 
+# certain treatment - control group
+month_satnet <-lm(month_diff ~ treat, data=saturated_network)
+two_weeks_satnet <-lm(twoweek_diff ~ treat, data=saturated_network)
+week_satnet <-lm(week_diff ~ treat, data=saturated_network)
+day_satnet <-lm(day_diff ~ treat, data=saturated_network)
+
+stargazer(day_satnet, week_satnet, two_weeks_satnet, month_satnet,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "text",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Greater Saturnated Network Subset)")
+
+```
+
+
+```{r}
+multiplot(day_NS, week_NS, two_weeks_NS, month_NS, coefficients=c("treat1", "treat2", "treat3", "treat4", "treat5"), 
+          newNames=c(treat1="Arab ID ", treat2="Religious ID ", treat3="Arab ID (Elite)", 
+                     treat4="Religious ID (Elite)", treat5=" No ID "), 
+          names=c("     Day", "   Week", "  Two Weeks ", "Month    "), 
+          title="Effect of Treatment on Volume of Anti-Shia Tweets (Median or Less Saturnated Network Subset)", scales="free_x",
+          sort="alphabetical", innerCI=1.645, outerCI=1.96, single=FALSE,  zeroType = 0,legend.position="none") +
+  theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none", axis.line = element_line(colour = "black"), text = element_text(size=15))+
+  ylab("Treatments") + xlab("Difference in Anti-Shia Tweet Count")+ geom_vline(aes(xintercept = 0), size = .5, linetype = "dashed")
+```
+
+
+\newpage
+## 5. Regression Table, Low Anti-Shia Network Saturation
+```{r, results='asis'}
+stargazer(day_NS, week_NS, two_weeks_NS, month_NS,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "latex",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Less Saturnated Network Subset)",
+          font.size = "tiny", header=FALSE, omit.stat=c("f", "ser"))
+```
+
+
+\newpage
+## 6. Robustness Checks (Network Saturation - High)
+```{r}
+multiplot(day_satnet, week_satnet, two_weeks_satnet, month_satnet, coefficients=c("treat1", "treat2", "treat3", "treat4", "treat5"), 
+          newNames=c(treat1="Arab ID ", treat2="Religious ID ", treat3="Arab ID (Elite)", 
+                     treat4="Religious ID (Elite)", treat5=" No ID "), 
+          names=c("     Day", "   Week", "  Two Weeks ", "Month    "), 
+          title="Effect of Treatment on Volume of Anti-Shia Tweets (Median or Greater Saturnated Network Subset)", scales="free_x",
+          sort="alphabetical", innerCI=1.645, outerCI=1.96, single=FALSE,  zeroType = 0,legend.position="none") +
+  theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none", axis.line = element_line(colour = "black"), text = element_text(size=15))+
+  ylab("Treatments") + xlab("Difference in Anti-Shia Tweet Count")+ geom_vline(aes(xintercept = 0), size = .5, linetype = "dashed")
+```
+
+
+\newpage
+## 7. Regression Table, High Anti-Shia Network Saturation
+```{r, results='asis'}
+stargazer(day_satnet, week_satnet, two_weeks_satnet, month_satnet,
+          covariate.labels = c("Arab ID", "Religious ID",
+                               "Arab ID (elite)", "Religious ID (elite)",
+                               "No ID"),
+          column.labels = c("One Day", "One Week", "Two Weeks", "One Month"),
+          dep.var.caption = "Difference in Anti-Shiea Tweets",
+          dep.var.labels.include = FALSE,
+          type = "latex",
+          title = "Effect of Treatment on Volume of Anti-Shia Tweets (Median or Greater Saturnated Network Subset)",
+          font.size = "tiny", header=FALSE, omit.stat=c("f", "ser"))
+```
+

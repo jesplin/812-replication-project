@@ -84,7 +84,7 @@ library("coefplot")
 getwd()
 
 # load in data
-data <- read.csv("siegal-badaan_data/twitter_data.csv")
+data <- read.csv("siegel-badaan_data/twitter_data.csv")
 
 # We want the treatment variable as a 'factor' (for its data type)
 # because we want to compare different treatments to the control situation
