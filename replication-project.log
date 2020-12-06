@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.1)  4 DEC 2020 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.12.1)  5 DEC 2020 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,42 +529,42 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
 (c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 80--97
+Underfull \hbox (badness 10000) in paragraph at lines 82--100
 
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 104.
+(Font)              <10> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 104.
+(Font)              <7> on input line 107.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 104.
+(Font)              <5> on input line 107.
 [1
 
 {c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-85.
+87.
 (c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2]
-<replication-project_files/figure-latex/unnamed-chunk-2-1.pdf, id=30, 650.43pt 
+)
+<replication-project_files/figure-latex/unnamed-chunk-2-1.pdf, id=20, 650.43pt 
 x 289.08pt>
 File: replication-project_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-2-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-2
--1.pdf  used on input line 240.
+-1.pdf  used on input line 243.
 (pdftex.def)             Requested size: 469.76817pt x 208.78584pt.
-[3 <./replication-project_files/figure-latex/unnamed-chunk-2-1.pdf>] [4] [5] [6
-]
+[2] [3 <./replication-project_files/figure-latex/unnamed-chunk-2-1.pdf>] [4] [5
+] [6]
 <replication-project_files/figure-latex/unnamed-chunk-4-1.pdf, id=60, 650.43pt 
 x 433.62pt>
 File: replication-project_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-4
--1.pdf  used on input line 508.
+-1.pdf  used on input line 524.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [7 <./replication-project_files/figure-latex/unnamed-chunk-4-1.pdf>] [8]
 <replication-project_files/figure-latex/unnamed-chunk-6-1.pdf, id=76, 650.43pt 
@@ -573,7 +573,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-6
--1.pdf  used on input line 574.
+-1.pdf  used on input line 590.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [9 <./replication-project_files/figure-latex/unnamed-chunk-6-1.pdf>] [10]
 <replication-project_files/figure-latex/unnamed-chunk-8-1.pdf, id=91, 650.43pt 
@@ -582,7 +582,7 @@ File: replication-project_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file
  (type pdf)
 <use replication-project_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: replication-project_files/figure-latex/unnamed-chunk-8
--1.pdf  used on input line 631.
+-1.pdf  used on input line 647.
 (pdftex.def)             Requested size: 469.76817pt x 313.17879pt.
 [11 <./replication-project_files/figure-latex/unnamed-chunk-8-1.pdf>] [12] (./r
 eplication-project.aux)
@@ -595,11 +595,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  10748 strings out of 481466
  156089 string characters out of 5920170
- 446547 words of memory out of 5000000
+ 446974 words of memory out of 5000000
  27272 multiletter control sequences out of 15000+600000
  584978 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 66i,10n,72p,524b,327s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,10n,72p,524b,392s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
 nc}{c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mat
 hsy.enc}{c:/Users/jesse/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/l
@@ -618,7 +618,7 @@ nyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/jesse/AppData/Roaming
 ing/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/jesse/AppData
 /Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/jesse/Ap
 pData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on replication-project.pdf (12 pages, 259522 bytes).
+Output written on replication-project.pdf (12 pages, 261223 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
